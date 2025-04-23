@@ -1,6 +1,6 @@
 # GO_SWIFT
 
-A RESTful API for managing SWIFT codes using Go and MySQL, designed for easy deployment with Docker.
+A RESTful API for managing SWIFT codes using Go and MySQL
 
 ## Requirements
 
@@ -73,6 +73,27 @@ Alternatively, you can pass environment variables directly when running the cont
 ```sh
 docker run -e DB_USER=root -e DB_PASS= -e DB_HOST=db -e DB_PORT=3306 -e DB_NAME=go_swift -p 8080:8080 go_swift
 ```
+
+---
+
+## Database Schema
+
+The application uses a MySQL database with the following table:
+
+### Table: `banks`
+
+| Column Name        | Data Type      | Description                                     |
+|--------------------|----------------|-------------------------------------------------|
+| `ID`               | `INT`          | Primary key, auto-incremented.                  |
+| `country_iso2_code`| `VARCHAR(2)`   | ISO 3166-1 alpha-2 country code.                |
+| `swift_code`       | `VARCHAR(20)`  | Unique SWIFT/BIC code.                          |
+| `code_type`        | `VARCHAR(10)`  | Type of the SWIFT code (e.g., BIC11).           |
+| `name`             | `VARCHAR(255)` | Name of the bank or financial institution.      |
+| `address`          | `VARCHAR(255)` | Address of the bank.                            |
+| `town_name`        | `VARCHAR(100)` | Name of the town or city.                       |
+| `country_name`     | `VARCHAR(100)` | Full name of the country.                       |
+| `time_zone`        | `VARCHAR(50)`  | Time zone of the bank's location.               |
+| `is_headquarter`   | `BOOLEAN`      | Indicates if the bank is a headquarters (1/0).  |
 
 ---
 
